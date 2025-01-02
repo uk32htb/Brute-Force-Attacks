@@ -30,6 +30,7 @@ medusa [target_options] [credential_options] -M module [module_options] :- Basic
 
 medusa -H web_servers.txt -U usernames.txt -P passwords.txt -M http -m GET :- -m is used to invoke HTTP module. 
 medusa -h <IP> -n <PORT> -u sshuser -P 2023-200_most_used_passwords.txt -M ssh -t 3 :- -m for SSH module.
+medusa -h 127.0.0.1 -U <username list> -P <Password list> -M ftp -t 3 :- When we need to run medusa for local host 
 
 
 ==========================================================================================================================================================================
